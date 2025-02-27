@@ -37,4 +37,20 @@ public class PersonalServices {
         }
         personalRepository.deleteById(id);
     }
+
+    /*
+     * a function is created that returns a Personal object, it receives 
+     *  an object of type Personal as a parameter
+     * 
+     * return personalRepository.save(personal);
+     *  
+     * Calls the save method of the repository PersonalRepository
+     * save the object to the database returns the saved object with 
+     * the id assigned by the database
+     * 
+     */
+    public Personal createPersonal (Personal personal){
+
+        return personalRepository.save(personal);
+    }
 }

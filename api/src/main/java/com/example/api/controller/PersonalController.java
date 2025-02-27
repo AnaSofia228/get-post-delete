@@ -11,6 +11,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -47,5 +49,19 @@ public class PersonalController {
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Staff not found");
         }
+    }
+
+/*
+ * @PostMapping this annotation defines the endpoint to create a new record
+ * 
+ * a createPersonal function is created that receives a Personal object as a parameter
+ * @RequestBody this annotation receives the JSON and converts it to a Java object
+ * 
+ * return personalPostServices.createPersonal(personal);  calls another function within 
+ * the PersonalServices service to save the object to the database and returns the saved object
+ */
+    @PostMapping
+    public Personal createPersonal(@RequestBody Personal personal){
+        return  personalPostServices.createPersonal(personal);
     }
 }
